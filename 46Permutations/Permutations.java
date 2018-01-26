@@ -20,15 +20,16 @@ public class Permutations{
 	public static void recursion(List<Integer> list, int[] nums, boolean[] flag, List<List<Integer>> res){
 		if(list.size() == nums.length){
 			res.add(new ArrayList<Integer>(list));
-			return;
-		}
-		for(int i = 0; i < nums.length; i++){
-			if(flag[i] != true){
-				list.add(nums[i]);
-				flag[i] = true;
-				recursion(list, nums, flag, res);
-				flag[i] = false;
-				list.remove(list.size()-1);
+			
+		}else{
+			for(int i = 0; i < nums.length; i++){
+				if(flag[i] != true){
+					list.add(nums[i]);
+					flag[i] = true;
+					recursion(list, nums, flag, res);
+					flag[i] = false;
+					list.remove(list.size()-1);
+				}
 			}
 		}
 	}
