@@ -2,7 +2,7 @@ import java.util.*;
 
 public class CombinationSum{
 	public static void main(String[] args){
-		int[] candidates = new int[]{2,2,3,7};
+		int[] candidates = {2,2,3,7};
 		int target = 1;
 		List<List<Integer>> res = combinationSum2(candidates, target);
 		System.out.println(res);
