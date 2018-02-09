@@ -29,7 +29,8 @@ public class Codec {
     	}
 	}
 
-    // Encodes a tree to a single string.
+	/* BFS version */
+    // Encodes a tree to a single string. 
     public static String serialize(TreeNode root) {
     	if(root == null)
     		return "null";
