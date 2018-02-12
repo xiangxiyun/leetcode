@@ -2,7 +2,7 @@ import java.util.*;
 
 public class WordPattern{
 	public static void main(String[] args){
-		String pattern = "abbc";
+		String pattern = "abba";
 		String str = "dog cat cat dog";
 
 		boolean res = wordPattern(pattern, str);
