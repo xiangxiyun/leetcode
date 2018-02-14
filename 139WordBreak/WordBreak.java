@@ -2,33 +2,36 @@ import java.util.*;
 
 public class WordBreak {
     public static void main(String[] args){
-        String s = "leetcode";
+        String s = "leetacode";
         List<String> wordDict = new ArrayList<>();
+        wordDict.add("leeta");
         wordDict.add("leet");
-        wordDict.add("a");
         wordDict.add("code");
-        boolean res = wordBreak(s, wordDict);
+        String res = wordBreak(s, wordDict);
         System.out.println(res);
     }
-    public static boolean wordBreak(String s, List<String> wordDict) {
-        boolean[] d = new boolean[s.length()+1];
-        d[0] = true;
+    public static String wordBreak(String s, List<String> wordDict) {
+        boolean[] res = new boolean[s.length()+1];
+        int[] bt = new int[s.length()+1];
+        res[0] = true;
+        StringBuilder sr = new StringBuilder();
 
-        for(int i = 1; i <= s.length(); i++){
-            for(String w:wordDict){
-                if(w.length() <= i){
-                    if(s.substring(i-w.length(), i).equals(w) && d[i-w.length()] == true){
-                        d[i] = true;
-                        break;
-                    }
+        for(int i = 1 ; i < s.length()+1; i++){
+            for(int j = 0; j < i; j++){
+                if(res[j] && wordDict.contains(s.substring(j,i))){
+                    res[i] = true;
+                    bt[i] = j;
                 }
             }
         }
-        // for(int i = 0; i <= s.length(); i++){
-        //     System.out.println(d[i]);
-        // }
-        return d[s.length()];
-              
+        int cur = s.length();
+        while(cur != 0){
+            int pre = bt[cur];
+            sr.insert(0, s.substring(pre, cur));
+            sr.insert(0, " ");
+            cur = pre;
+        }
+        return sr.toString().substring(1, sr.length());
     }
 
 }
